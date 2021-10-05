@@ -11,6 +11,10 @@ const wallet = require('../controllers/walletControllers');
 router.get('/card', card.get);
 
 router.get('/client', client.get);
+router.get('/client/:id', client.getId);
+router.delete('/client/:id', client.deletes);
+
+
 
 router.get('/product', product.get);
 
