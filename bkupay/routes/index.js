@@ -1,5 +1,27 @@
 const express = require('express');
 const router = express.Router();
 
+const card = require('../controllers/cardControllers ');
+const client = require('../controllers/clientControllers ');
+const product = require('../controllers/productControllers');
+const transaction = require('../controllers/transactionControllers');
+const wallet = require('../controllers/walletControllers');
 
-module.exports= router;
+
+router.get('/card', card.get);
+
+router.get('/client', client.get);
+
+router.get('/product', product.get);
+
+router.get('/transaction', transaction.get);
+
+router.get('/wallet', wallet.get);
+
+
+
+
+
+
+
+module.exports = router;
