@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, MailOutlined, CreditCardOutlined } from '@ant-design/icons';
 
 import {
 
@@ -20,34 +20,34 @@ const { Option } = Select;
 
 const formItemLayout = {
     labelCol: {
-      xs: {
-        span: 24,
-      },
-      sm: {
-        span: 8,
-      },
+        xs: {
+            span: 24,
+        },
+        sm: {
+            span: 8,
+        },
     },
     wrapperCol: {
-      xs: {
-        span: 24,
-      },
-      sm: {
-        span: 16,
-      },
+        xs: {
+            span: 24,
+        },
+        sm: {
+            span: 16,
+        },
     },
-  };
-  const tailFormItemLayout = {
+};
+const tailFormItemLayout = {
     wrapperCol: {
-      xs: {
-        span: 24,
-        offset: 0,
-      },
-      sm: {
-        span: 16,
-        offset: 8,
-      },
+        xs: {
+            span: 24,
+            offset: 0,
+        },
+        sm: {
+            span: 16,
+            offset: 8,
+        },
     },
-  };
+};
 
 
 const SigIn = () => {
@@ -61,7 +61,7 @@ const SigIn = () => {
 
     const [form] = Form.useForm();
 
- 
+
 
 
 
@@ -85,7 +85,76 @@ const SigIn = () => {
 
                         {
                             sigIn ? (
-                                "algo"
+                                <Form
+                                    name="register"
+                                    className="login-form"
+                                    initialValues={{
+                                        remember: true,
+                                    }}
+                                    onFinish={onFinish}
+                                >
+                                    <Form.Item
+                                        name="username"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please input your Username!',
+                                            },
+                                        ]}
+                                    >
+                                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="email"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please input your email!',
+                                            },
+                                        ]}
+                                    >
+                                        <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="card"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please input your number card!',
+                                            },
+                                        ]}
+                                    >
+                                        <Input prefix={<CreditCardOutlined className="site-form-item-icon" />} placeholder="card" />
+                                    </Form.Item>
+                                    <Form.Item
+                                        name="password"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Please input your Password!',
+                                            },
+                                        ]}
+                                    >
+                                        <Input
+                                            prefix={<LockOutlined className="site-form-item-icon" />}
+                                            type="password"
+                                            placeholder="Password"
+                                        />
+                                    </Form.Item>
+
+                                    <Form.Item>
+                                        <Button type="primary" htmlType="submit" className="sigin-form-button">
+                                            Register
+                                        </Button>
+                                        Or
+
+                                        <Button type="primary" ghost htmlType="submit" className="sigin-form-button">
+                                            Login
+                                        </Button>
+
+                                        {/* <a href="">register now!</a> */}
+                                    </Form.Item>
+                                </Form>
                             ) :
                                 (
                                     <Form
@@ -133,10 +202,14 @@ const SigIn = () => {
                                         </Form.Item>
 
                                         <Form.Item>
-                                            <Button type="primary" htmlType="submit" className="login-form-button">
-                                                Log in
+                                            <Button type="primary"  htmlType="submit" className="sigin-form-button">
+                                                Login
                                             </Button>
-                                            Or <a href="">register now!</a>
+                                            Or
+                                            <Button type="primary" ghost htmlType="submit" className="sigin-form-button">
+                                                Register
+                                            </Button>
+
                                         </Form.Item>
                                     </Form>
                                 )
