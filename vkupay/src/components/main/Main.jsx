@@ -1,19 +1,38 @@
 import React, { useState } from 'react'
+import SigIn from './SigIn'
+
+
+
+
+
+
 
 const Main = () => {
 
-    const [log, setLog] = useState(false);
+
+    const [reg, setReg] = useState(false)
+
+
+    const [log, setLog] = useState(true);
     //me debería dar un id
 
     return (
         <div>
+
+
+
             {
                 log ? (
-                    <div>aca va un login</div>
+                    //  <div>aca va un login</div>
+
+                    <SigIn></SigIn>
+
+
+
                 ) :
                     (
-"hola"
-              )
+                        "hola"
+                    )
             }
         </div>
     )

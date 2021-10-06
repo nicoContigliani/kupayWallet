@@ -3,6 +3,7 @@ import './App.css';
 import Pre from './components/presentation/Pre';
 import Main from './components/main/Main';
 import { useState } from 'react';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 
 function App() {
@@ -11,7 +12,12 @@ function App() {
 
   return (
     <div >
-      <h1>hola</h1>
+      <div className="App">
+      <h1>Kupay</h1>
+
+      </div>
+
+     
 
       {
         cero ? (
