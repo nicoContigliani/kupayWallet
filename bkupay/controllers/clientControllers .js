@@ -53,6 +53,6 @@ module.exports = {
     get,
     getId,
     save,
-    // update,
+    update,
     deletes
 };

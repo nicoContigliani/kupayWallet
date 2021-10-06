@@ -9,9 +9,15 @@ const wallet = require('../controllers/walletControllers');
 
 
 router.get('/card', card.get);
+router.get('/card/:id', card.getId);
+router.post('/card', card.save);
+router.post('/card/:id', card.update);
+router.delete('/card/:id', card.deletes);
 
 router.get('/client', client.get);
 router.get('/client/:id', client.getId);
+router.post('/client',client.save);
+router.post('/client/:id',client.update);
 router.delete('/client/:id', client.deletes);
 
 
