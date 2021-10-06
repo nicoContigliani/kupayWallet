@@ -6,8 +6,8 @@ const get = async (req, res) => {
 };
 
 const getId = async (req, res) => {
-    const id_agent= parseInt(req.params.id);
-    const response = await pool.query('SELECT * FROM clients where  id_client =' + id_client);
+    const id_card= parseInt(req.params.id);
+    const response = await pool.query('SELECT * FROM cards where  id_client =' + id_card);
     res.status(200).json(response.rows);
 };
 
@@ -15,7 +15,7 @@ const getId = async (req, res) => {
 
 module.exports = {
      get,
-    // getId,
+     getId,
     // save,
     // update,
     // deletes
