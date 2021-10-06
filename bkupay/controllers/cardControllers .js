@@ -7,7 +7,7 @@ const get = async (req, res) => {
 
 const getId = async (req, res) => {
     const id_card= parseInt(req.params.id);
-    const response = await pool.query('SELECT * FROM cards where  id_client =' + id_card);
+    const response = await pool.query('SELECT * FROM cards where  id_card =' + id_card);
     res.status(200).json(response.rows);
 };
 

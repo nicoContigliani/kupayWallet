@@ -20,11 +20,20 @@ router.post('/client',client.save);
 router.post('/client/:id',client.update);
 router.delete('/client/:id', client.deletes);
 
-
-
 router.get('/product', product.get);
+router.get('/product/:id', product.getId);
+router.post('/product',product.save);
+router.post('/product/:id',product.update);
+router.delete('/product/:id', product.deletes);
+
 
 router.get('/transaction', transaction.get);
+router.get('/transaction/:id', transaction.getId);
+router.post('/transaction',transaction.save);
+router.post('/transaction/:id',transaction.update);
+router.delete('/transaction/:id',transaction.deletes);
+
+
 
 router.get('/wallet', wallet.get);
 
