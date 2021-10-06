@@ -52,7 +52,7 @@ const tailFormItemLayout = {
 
 const SigIn = () => {
     const [sig, setSig] = useState(true);
-    const [sigIn, setSigIn] = useState(true)
+    const [sigIn, setSigIn] = useState(false)
 
 
     const onFinish = (values) => {
@@ -85,133 +85,163 @@ const SigIn = () => {
 
                         {
                             sigIn ? (
-                                <Form
-                                    name="register"
-                                    className="login-form"
-                                    initialValues={{
-                                        remember: true,
-                                    }}
-                                    onFinish={onFinish}
-                                >
-                                    <Form.Item
-                                        name="username"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please input your Username!',
-                                            },
-                                        ]}
-                                    >
-                                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name="email"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please input your email!',
-                                            },
-                                        ]}
-                                    >
-                                        <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name="card"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please input your number card!',
-                                            },
-                                        ]}
-                                    >
-                                        <Input prefix={<CreditCardOutlined className="site-form-item-icon" />} placeholder="card" />
-                                    </Form.Item>
-                                    <Form.Item
-                                        name="password"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please input your Password!',
-                                            },
-                                        ]}
-                                    >
-                                        <Input
-                                            prefix={<LockOutlined className="site-form-item-icon" />}
-                                            type="password"
-                                            placeholder="Password"
-                                        />
-                                    </Form.Item>
 
-                                    <Form.Item>
-                                        <Button type="primary" htmlType="submit" className="sigin-form-button">
-                                            Register
-                                        </Button>
-                                        Or
+                                <div className="row">
+                                    <div className="col-2">
 
-                                        <Button type="primary" ghost htmlType="submit" className="sigin-form-button">
-                                            Login
-                                        </Button>
+                                    </div>
+                                    <div className="col-8">
+                                        <br /><hr />  <h2>Register</h2>
 
-                                        {/* <a href="">register now!</a> */}
-                                    </Form.Item>
-                                </Form>
-                            ) :
-                                (
-                                    <Form
-                                        name="normal_login"
-                                        className="login-form"
-                                        initialValues={{
-                                            remember: true,
-                                        }}
-                                        onFinish={onFinish}
-                                    >
-                                        <Form.Item
-                                            name="username"
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'Please input your Username!',
-                                                },
-                                            ]}
+                                        <Form
+                                            name="register"
+                                            className="login-form"
+                                            initialValues={{
+                                                remember: true,
+                                            }}
+                                            onFinish={onFinish}
                                         >
-                                            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-                                        </Form.Item>
-                                        <Form.Item
-                                            name="password"
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'Please input your Password!',
-                                                },
-                                            ]}
-                                        >
-                                            <Input
-                                                prefix={<LockOutlined className="site-form-item-icon" />}
-                                                type="password"
-                                                placeholder="Password"
-                                            />
-                                        </Form.Item>
-                                        <Form.Item>
-                                            <Form.Item name="remember" valuePropName="checked" noStyle>
-                                                <Checkbox>Remember me</Checkbox>
+                                            <Form.Item
+                                                name="username"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'Please input your Username!',
+                                                    },
+                                                ]}
+                                            >
+                                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name="email"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'Please input your email!',
+                                                    },
+                                                ]}
+                                            >
+                                                <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name="card"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'Please input your number card!',
+                                                    },
+                                                ]}
+                                            >
+                                                <Input prefix={<CreditCardOutlined className="site-form-item-icon" />} placeholder="card" />
+                                            </Form.Item>
+                                            <Form.Item
+                                                name="password"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'Please input your Password!',
+                                                    },
+                                                ]}
+                                            >
+                                                <Input
+                                                    prefix={<LockOutlined className="site-form-item-icon" />}
+                                                    type="password"
+                                                    placeholder="Password"
+                                                />
                                             </Form.Item>
 
-                                            <a className="login-form-forgot" href="">
-                                                Forgot password
-                                            </a>
-                                        </Form.Item>
+                                            <Form.Item>
+                                                <Button type="primary" htmlType="submit" className="sigin-form-button">
+                                                    Register
+                                                </Button>
+                                                Or
 
-                                        <Form.Item>
-                                            <Button type="primary"  htmlType="submit" className="sigin-form-button">
-                                                Login
-                                            </Button>
-                                            Or
-                                            <Button type="primary" ghost htmlType="submit" className="sigin-form-button">
-                                                Register
-                                            </Button>
+                                                <Button type="primary" ghost htmlType="submit" className="sigin-form-button">
+                                                    Login
+                                                </Button>
 
-                                        </Form.Item>
-                                    </Form>
+
+                                            </Form.Item>
+                                        </Form>
+                                        <hr />
+
+                                    </div>
+                                    <div className="col-2"></div>
+                                </div>
+
+                            ) :
+                                (
+
+
+                                    <div>
+                                        <div className="row">
+                                            <div className="col-2">
+
+                                            </div>
+                                            <div className="col-8">
+                                                <br /><hr />
+                                                <h2>Login</h2>
+                                                <Form
+                                                    name="normal_login"
+                                                    className="login-form"
+                                                    initialValues={{
+                                                        remember: true,
+                                                    }}
+                                                    onFinish={onFinish}
+                                                >
+                                                    <Form.Item
+                                                        name="username"
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: 'Please input your Username!',
+                                                            },
+                                                        ]}
+                                                    >
+                                                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                                                    </Form.Item>
+                                                    <Form.Item
+                                                        name="password"
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: 'Please input your Password!',
+                                                            },
+                                                        ]}
+                                                    >
+                                                        <Input
+                                                            prefix={<LockOutlined className="site-form-item-icon" />}
+                                                            type="password"
+                                                            placeholder="Password"
+                                                        />
+                                                    </Form.Item>
+                                                    <Form.Item>
+                                             
+                                                    </Form.Item>
+
+                                                    <Form.Item>
+                                                        <Button type="primary" htmlType="submit" className="sigin-form-button">
+                                                            Login
+                                                        </Button>
+                                                        Or
+                                                        <Button type="primary" ghost htmlType="submit" className="sigin-form-button">
+                                                            Register
+                                                        </Button>
+
+                                                    </Form.Item>
+                                                </Form>
+
+<hr />
+
+                                            </div>
+                                            <div className="col-2">
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
                                 )
 
                         }
