@@ -9,6 +9,41 @@ const get = async (req, res) => {
 };
 
 const save = async (req, res) => {
+
+
+
+//fullname, name_card, expiration, number_card, company_card, passwords_card, limit_card, count_total_card
+//
+
+
+
+
+//primero crea la tarjeta 
+//INSERT INTO public.cards
+//(fullname, name_card, expiration, number_card, company_card, passwords_card, limit_card, count_total_card)
+//VALUES('', '', '', 0, '', '', 0, 0);
+
+
+//id card hace un get con number_card   
+//SELECT * FROM public.cards ORDER BY id_card asc limit 1;
+
+
+
+//crea la billetera 
+// INSERT INTO public.wallets
+// (name_wallet, passwords_card, count_wallet, id_card)
+// VALUES('', '', 0, 0);
+
+
+//crear clliente 
+// INSERT INTO public.clients
+// (usernames, email, passwords, id_wallet, lastname)
+// VALUES('', '', '', 0, '');
+
+
+
+
+
     // const {id_agent,detail, active } = req.body;
     // const response = await pool.query('INSERT INTO agents (detail, active) VALUES ($1, $2)', [detail, active]);
 
@@ -25,12 +60,12 @@ const save = async (req, res) => {
     const hash = await bcrypt.hash(password, rounds)
 
     console.log(hash,"+++++++++++++++++++++++");
-    console.log(await bcrypt.compare(password, hash))
+    // console.log(await bcrypt.compare(password, hash))
 
 
+     const response = await pool.query('INSERT INTO agents (usernames, email, passwords, id_wallet, id_card, lastname) VALUES ($1, $2)', [sername, email, password, card]);
 
 
-    // console.log(username, email, password, card)
     res.json({
         message: 'User Added successfully',
 
