@@ -102,7 +102,7 @@ const SigIn = () => {
                                             onFinish={onFinish}
                                         >
                                             <Form.Item
-                                                name="username"
+
                                                 rules={[
                                                     {
                                                         required: true,
@@ -110,10 +110,13 @@ const SigIn = () => {
                                                     },
                                                 ]}
                                             >
-                                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                                                <Input
+                                                    name="username"
+
+                                                    prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
                                             </Form.Item>
                                             <Form.Item
-                                                name="email"
+
                                                 rules={[
                                                     {
                                                         required: true,
@@ -121,10 +124,12 @@ const SigIn = () => {
                                                     },
                                                 ]}
                                             >
-                                                <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
+                                                <Input
+                                                    name="email"
+                                                    prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
                                             </Form.Item>
                                             <Form.Item
-                                                name="card"
+
                                                 rules={[
                                                     {
                                                         required: true,
@@ -132,10 +137,12 @@ const SigIn = () => {
                                                     },
                                                 ]}
                                             >
-                                                <Input prefix={<CreditCardOutlined className="site-form-item-icon" />} placeholder="card" />
+                                                <Input
+                                                    name="card"
+                                                    prefix={<CreditCardOutlined className="site-form-item-icon" />} placeholder="card" />
                                             </Form.Item>
                                             <Form.Item
-                                                name="password"
+
                                                 rules={[
                                                     {
                                                         required: true,
@@ -144,6 +151,7 @@ const SigIn = () => {
                                                 ]}
                                             >
                                                 <Input
+                                                    name="password"
                                                     prefix={<LockOutlined className="site-form-item-icon" />}
                                                     type="password"
                                                     placeholder="Password"
@@ -216,7 +224,7 @@ const SigIn = () => {
                                                         />
                                                     </Form.Item>
                                                     <Form.Item>
-                                             
+
                                                     </Form.Item>
 
                                                     <Form.Item>
@@ -231,7 +239,7 @@ const SigIn = () => {
                                                     </Form.Item>
                                                 </Form>
 
-<hr />
+                                                <hr />
 
                                             </div>
                                             <div className="col-2">
