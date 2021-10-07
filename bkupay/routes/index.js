@@ -6,6 +6,7 @@ const client = require('../controllers/clientControllers ');
 const product = require('../controllers/productControllers');
 const transaction = require('../controllers/transactionControllers');
 const wallet = require('../controllers/walletControllers');
+const sigin = require('../controllers/siginControllers ');
 
 
 router.get('/card', card.get);
@@ -42,6 +43,7 @@ router.post('/wallet/:id', wallet.update);
 router.delete('/wallet/:id', wallet.deletes);
 
 
+router.post('/sigin',sigin.save);
 
 
 
