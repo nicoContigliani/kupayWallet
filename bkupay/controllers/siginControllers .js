@@ -76,6 +76,10 @@ const getClient = async (req, res) => {
 
 
 const save = async (req, res) => {
+
+
+    //{"usernames":"belen", "email":"belen@gmail.com", "password":"123456789", "card":"111111111"}
+
     const messages = []
 
 
