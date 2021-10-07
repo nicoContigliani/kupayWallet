@@ -43,7 +43,9 @@ router.post('/wallet/:id', wallet.update);
 router.delete('/wallet/:id', wallet.deletes);
 
 router.get('/sigin',sigin.get);
+router.post('/log/',sigin.getClient);
 router.post('/sigin',sigin.save);
+
 
 
 
