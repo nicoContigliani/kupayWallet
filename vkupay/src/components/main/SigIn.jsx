@@ -102,7 +102,7 @@ const SigIn = () => {
                                             onFinish={onFinish}
                                         >
                                             <Form.Item
-
+                                                name="username"
                                                 rules={[
                                                     {
                                                         required: true,
@@ -110,13 +110,10 @@ const SigIn = () => {
                                                     },
                                                 ]}
                                             >
-                                                <Input
-                                                    name="username"
-
-                                                    prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
                                             </Form.Item>
                                             <Form.Item
-
+                                               
                                                 rules={[
                                                     {
                                                         required: true,
@@ -125,24 +122,12 @@ const SigIn = () => {
                                                 ]}
                                             >
                                                 <Input
-                                                    name="email"
-                                                    prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
+                                                 name="email"
+                                                prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
                                             </Form.Item>
+                                          
                                             <Form.Item
-
-                                                rules={[
-                                                    {
-                                                        required: true,
-                                                        message: 'Please input your number card!',
-                                                    },
-                                                ]}
-                                            >
-                                                <Input
-                                                    name="card"
-                                                    prefix={<CreditCardOutlined className="site-form-item-icon" />} placeholder="card" />
-                                            </Form.Item>
-                                            <Form.Item
-
+                                              
                                                 rules={[
                                                     {
                                                         required: true,
@@ -151,13 +136,25 @@ const SigIn = () => {
                                                 ]}
                                             >
                                                 <Input
-                                                    name="password"
+                                                  name="password"
                                                     prefix={<LockOutlined className="site-form-item-icon" />}
                                                     type="password"
                                                     placeholder="Password"
                                                 />
                                             </Form.Item>
-
+                                            <Form.Item
+                                              
+                                              rules={[
+                                                  {
+                                                      required: true,
+                                                      message: 'Please input your number card!',
+                                                  },
+                                              ]}
+                                          >
+                                              <Input 
+                                                name="card"
+                                              prefix={<CreditCardOutlined className="site-form-item-icon" />} placeholder="card" />
+                                          </Form.Item>
                                             <Form.Item>
                                                 <Button type="primary" htmlType="submit" className="sigin-form-button">
                                                     Register
@@ -224,7 +221,7 @@ const SigIn = () => {
                                                         />
                                                     </Form.Item>
                                                     <Form.Item>
-
+                                             
                                                     </Form.Item>
 
                                                     <Form.Item>
@@ -239,7 +236,7 @@ const SigIn = () => {
                                                     </Form.Item>
                                                 </Form>
 
-                                                <hr />
+<hr />
 
                                             </div>
                                             <div className="col-2">
