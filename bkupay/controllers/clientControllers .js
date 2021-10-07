@@ -14,12 +14,12 @@ const getId = async (req, res) => {
 
 const save = async (req, res) => {
     const { id_client, detail, active } = req.body;
-    const response = await pool.query('INSERT INTO clients (names, email, passwords, id_wallet, id_card, lastname) VALUES ($1, $2,$3,$4,$5,$6)', [names, email, passwords, id_wallet, id_card, lastname]);
+    const response = await pool.query('INSERT INTO clients (username, email, passwords, id_wallet, id_card, lastname) VALUES ($1, $2,$3,$4,$5,$6)', [username, email, passwords, id_wallet, id_card, lastname]);
 
     res.json({
         message: 'User Added successfully',
         body: {
-            user: { id_client, detail, active }
+            user: { username, email, passwords, id_wallet, id_card, lastname }
         }
     })
 };
@@ -30,9 +30,9 @@ const update = async (req, res) => {
     // console.log(req.body);
     const id_client = parseInt(req.params.id);
     console.log(id_client);
-    const { names, email, passwords, id_wallet, id_card, lastname } = req.body;
-    const response = await pool.query('UPDATE clients SET names=$1, email=$2, passwords=$3, id_wallet=$4, id_card=$5, lastname=$6 where id_client = $7 ', [
-        names, email, passwords, id_wallet, id_card, lastname, id_client
+    const { username, email, passwords, id_wallet, id_card, lastname } = req.body;
+    const response = await pool.query('UPDATE clients SET username=$1, email=$2, passwords=$3, id_wallet=$4, id_card=$5, lastname=$6 where id_client = $7 ', [
+        username, email, passwords, id_wallet, id_card, lastname,id_client
     ]);
     res.json(`User ${id_client} Updated Successfully`);
 };

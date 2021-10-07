@@ -1,4 +1,6 @@
 const pool = require('../databases/database');
+const bcrypt = require('bcrypt')
+const rounds = 10;
 
 
 const get = async (req, res) => {
@@ -16,6 +18,23 @@ const save = async (req, res) => {
     //         user: { id_agent, detail, active }
     //     }
     // })
+
+    const { username, email, password, card } = req.body;
+    console.log(username, email, password, card)
+  
+    const hash = await bcrypt.hash(password, rounds)
+
+    console.log(hash,"+++++++++++++++++++++++");
+    console.log(await bcrypt.compare(password, hash))
+
+
+
+
+    // console.log(username, email, password, card)
+    res.json({
+        message: 'User Added successfully',
+
+    })
 };
 
 
@@ -29,7 +48,7 @@ const save = async (req, res) => {
 //     console.log(hash)
 //     console.log(await bcrypt.compare(password, hash))
 //   }
-  
+
 //   hashPassword()
 
 
