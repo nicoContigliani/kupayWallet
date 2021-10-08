@@ -50,7 +50,7 @@ const getClient = async (req, res) => {
         // console.log(exist.passwords)
         const passwords = exist.passwords;
         const respuesta = await bcrypt.compare(password, passwords)
-        console.log(respuesta)
+        // console.log(respuesta)
         resp.push(respuesta)
 
 

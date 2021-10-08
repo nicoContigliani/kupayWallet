@@ -3,7 +3,12 @@ import React from 'react'
 const Pre = () => {
     return (
         <div>
-         Esto sería la presentación   
+            <div className="App">
+                <hr />
+                <h2>Kupay </h2>
+                <h5>Challeng</h5>
+
+            </div>
         </div>
     )
 }
