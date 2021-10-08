@@ -36,32 +36,45 @@ const getClient = async (req, res) => {
     const x = responsess.rows;
 
     const exist = x.find(item => (item.username === usernames || item.email === email))
-    if (exist.username === usernames || item.email === email) {
+    // console.log(exist)
+    // console.log([exist].length)
+
+
+    if
+    //  (exist.username === usernames || item.email === email) 
+    //  ([exist].length !==0 ) 
+      (exist !== undefined || exist !== undefined) 
+
+    {
         messages.push("son iguales")
         // console.log(exist.passwords)
         const passwords = exist.passwords;
         const respuesta = await bcrypt.compare(password, passwords)
         console.log(respuesta)
         resp.push(respuesta)
-      
 
-       if(respuesta===false){
 
-       }else{
-        const info = await pool.query(`select * from clients c inner join wallets w on c.id_wallet = w.id_wallet inner join cards c2 on w.id_card = c2.id_card inner join transactions t on w.id_wallet = t.id_wallet inner join products p on t.id_product = p.id_product where email =${email} or username =${usernames}`);
-        body.push(info)
-    }
+        if (respuesta === false) {
+            resp.push(false)
+            messages.push("Password incorrecto")
+
+        } else {
+            const info = await pool.query(`select * from clients c inner join wallets w on c.id_wallet = w.id_wallet inner join cards c2 on w.id_card = c2.id_card inner join transactions t on w.id_wallet = t.id_wallet inner join products p on t.id_product = p.id_product where username='${usernames}' or email='${email}'`);
+            const data = info.rows;
+            body.push(data)
+        }
 
 
     } else {
-        console.log("no son iguales")
-        console.log(usernames)
+        // console.log("no son iguales")
+        // console.log(usernames)
+        resp.push(false)
+        messages.push("Cliente no encontrado")
 
     }
 
     // res.status(200).json(responsess.rows)
-    const info = await pool.query('select * from clients c inner join wallets w on c.id_wallet = w.id_wallet inner join cards c2 on w.id_card = c2.id_card inner join transactions t on w.id_wallet = t.id_wallet inner join products p on t.id_product = p.id_product where id_client =' + id_client);
-    body.push(info)
+
 
     res.json({
         messages,
@@ -128,7 +141,7 @@ const save = async (req, res) => {
         messages.push("cliente, wallet and card create")
 
         const info = await pool.query('select * from clients c inner join wallets w on c.id_wallet = w.id_wallet inner join cards c2 on w.id_card = c2.id_card inner join transactions t on w.id_wallet = t.id_wallet inner join products p on t.id_product = p.id_product where id_client =' + id_client);
-
+        body.push(info)
 
 
     }
@@ -179,6 +192,8 @@ const save = async (req, res) => {
 
     res.json({
         message: `${messages}`,
+        resp: true,
+        body
 
     })
 };
