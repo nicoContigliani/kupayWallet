@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import SigIn from './SigIn'
+import React, { useState } from 'react';
+import SigIn from './SigIn';
+import axios from 'axios';
 
 
 
@@ -27,6 +28,7 @@ const Main = () => {
         card: "123456789"
     })
 
+
     const handleInputChange = (e) => {
         e.preventDefault()
         setDatosUser({
@@ -36,10 +38,111 @@ const Main = () => {
     }
 
 
-    const userRegister = (e) => {
+    const userRegister = async(e) => {
         e.preventDefault()
         console.log(datosUser)
+
+        try {
+
+            const resultP = await axios.post(`http://localhost:3500/sigin`, {
+                username: datosUser.usernames, email: datosUser.email, password: datosUser.password
+            })
+            console.log(resultP.status)
+            // console.log(resultP.data.body[0])
+            console.log(resultP.data)
+            console.log(resultP.data.resp[0].respuesta)
+            // console.log(resultP.data.resp)
+
+
+            if (resultP.data.resp[0].respuesta === true) {
+                setLog(false)
+            }
+
+            // setMe(false)
+            if (resultP.status === 200) {
+                // setMe(false)
+                console.log("funcion")
+
+            }
+            if (resultP.status === 400) {
+                // setErr("true")
+                console.log("error")
+            }
+
+            // {
+            //     "usernames":"nico",
+            //     "email":"ran.contigliani@gmail.com",
+            //     "password":"123456789"
+            // }
+
+
+
+        } catch (error) {
+            console.lo(error)
+        }
+
+
+
+
     }
+
+
+
+    const handleInputChangeS = (e) => {
+        e.preventDefault()
+        setDatosUser({
+            ...datosUser,
+            [e.target.name]: e.target.value
+        })
+    }
+
+
+
+    const userLog = async (e) => {
+        e.preventDefault()
+        console.log({ ...datosUser })
+        console.log(datosUser.usernames)
+
+        try {
+
+            const resultP = await axios.post(`http://localhost:3500/log`, {
+                username: datosUser.usernames, email: datosUser.email, password: datosUser.password
+            })
+            console.log(resultP.status)
+            // console.log(resultP.data.body[0])
+            console.log(resultP.data)
+            console.log(resultP.data.resp[0].respuesta)
+            // console.log(resultP.data.resp)
+
+
+            if (resultP.data.resp[0].respuesta === true) {
+                setLog(false)
+            }
+
+            // setMe(false)
+            if (resultP.status === 200) {
+                // setMe(false)
+                console.log("funcion")
+
+            }
+            if (resultP.status === 400) {
+                // setErr("true")
+                console.log("error")
+            }
+
+            // {
+            //     "usernames":"nico",
+            //     "email":"ran.contigliani@gmail.com",
+            //     "password":"123456789"
+            // }
+
+
+
+        } catch (error) {
+            console.lo(error)
+        }
+    }
+
 
 
 
@@ -93,6 +196,7 @@ const Main = () => {
                                     </div>
                                     <button type="submit" class="btn btn-primary">Send</button>
                                 </form>
+                                <hr />
                             </div>
 
                             <div className="col-6">
@@ -101,25 +205,27 @@ const Main = () => {
                                         SigIn
 
                                     </h3>
-                                    <form>
+                                    <form onSubmit={userLog}>
 
                                         <div class="form-group">
                                             <label for="exampleInput">Username</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usernames" />
+                                            <input name="usernames" defaultValue={datosUser.usernames} onChange={handleInputChangeS}
+                                                type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usernames" />
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                                            <label for="exampleInput">Email address</label>
+                                            <input name="email" defaultValue={datosUser.email} onChange={handleInputChangeS}
+                                                type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
                                         </div>
-
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                                            <input name="password" defaultValue={datosUser.password} onChange={handleInputChangeS}
+                                                type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Send</button>
                                     </form>
-
+                                    <hr />
                                 </div>
                             </div>
                         </div>

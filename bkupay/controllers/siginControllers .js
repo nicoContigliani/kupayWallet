@@ -30,7 +30,7 @@ const getClient = async (req, res) => {
     const resp = [];
     const body = []
 
-
+    console.log(usernames, email, password)
 
     const responsess = await pool.query(` select * from clients c where email ='${email}' OR username ='${usernames}' `);
     const x = responsess.rows;
@@ -41,17 +41,15 @@ const getClient = async (req, res) => {
 
 
     if
-    //  (exist.username === usernames || item.email === email) 
-    //  ([exist].length !==0 ) 
-      (exist !== undefined || exist !== undefined) 
-
-    {
+        //  (exist.username === usernames || item.email === email) 
+        //  ([exist].length !==0 ) 
+        (exist !== undefined || exist !== undefined) {
         messages.push("son iguales")
         // console.log(exist.passwords)
         const passwords = exist.passwords;
         const respuesta = await bcrypt.compare(password, passwords)
-        // console.log(respuesta)
-        resp.push(respuesta)
+        console.log(respuesta)
+        resp.push({respuesta})
 
 
         if (respuesta === false) {
@@ -84,7 +82,7 @@ const getClient = async (req, res) => {
 };
 
 
-
+///////////////////////////////////////////////
 const save = async (req, res) => {
 
 
@@ -94,7 +92,7 @@ const save = async (req, res) => {
     const resp = [];
 
     const { usernames, email, password, card } = req.body;
-    // console.log(req.body)
+     console.log(req.body)
 
 
     const responsess = await pool.query(` select * from clients c where email ='${email}' OR username ='${usernames}' `);
