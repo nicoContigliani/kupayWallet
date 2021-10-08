@@ -43,7 +43,15 @@ const getClient = async (req, res) => {
         const respuesta = await bcrypt.compare(password, passwords)
         console.log(respuesta)
         resp.push(respuesta)
-        body.push(x)
+      
+
+       if(respuesta===false){
+
+       }else{
+        const info = await pool.query(`select * from clients c inner join wallets w on c.id_wallet = w.id_wallet inner join cards c2 on w.id_card = c2.id_card inner join transactions t on w.id_wallet = t.id_wallet inner join products p on t.id_product = p.id_product where email =${email} or username =${usernames}`);
+        body.push(info)
+    }
+
 
     } else {
         console.log("no son iguales")
@@ -51,25 +59,14 @@ const getClient = async (req, res) => {
 
     }
 
-    // console.log(responsess.rows[0].passwords)
-    // const passwords = responsess.rows[0].passwords
-    // console.log(await bcrypt.compare(password, passwords))
-
-
-
-
-
     // res.status(200).json(responsess.rows)
-
+    const info = await pool.query('select * from clients c inner join wallets w on c.id_wallet = w.id_wallet inner join cards c2 on w.id_card = c2.id_card inner join transactions t on w.id_wallet = t.id_wallet inner join products p on t.id_product = p.id_product where id_client =' + id_client);
+    body.push(info)
 
     res.json({
-        // message: 'User Added successfully',
-        // body: {
-        //     user: { username, email, passwords, id_wallet, id_card, lastname }
-        // }
         messages,
         resp,
-        x
+        body
     })
 };
 
@@ -81,7 +78,7 @@ const save = async (req, res) => {
     //{"usernames":"belen", "email":"belen@gmail.com", "password":"123456789", "card":"111111111"}
 
     const messages = []
-
+    const resp = [];
 
     const { usernames, email, password, card } = req.body;
     // console.log(req.body)
@@ -93,6 +90,7 @@ const save = async (req, res) => {
 
     if (s.length > 0) {
         console.log("existe")
+        messages.push("El usuario existe")
     } else {
         console.log("no existe")
 
@@ -118,7 +116,20 @@ const save = async (req, res) => {
         // console.log(hash,"+++++++++++++++++++++++");
         const insertClient = await pool.query('INSERT INTO public.clients (username, email, passwords, id_wallet, lastname) VALUES ($1, $2,$3,$4,$5)', [username = usernames, email, passwords = hash, id_wallet, lastname = usernames]);
 
+        //update wallet for id_client
+        const getClientId = await pool.query('SELECT * FROM public.clients ORDER BY id_client desc limit 1');
+        const id_client = getClientId.rows[0].id_client;
+        const resp = await pool.query('UPDATE wallets SET id_client = $1 where id_card = $2', [
+            id_card, id_client
+        ]);
+
+        ;
+
         messages.push("cliente, wallet and card create")
+
+        const info = await pool.query('select * from clients c inner join wallets w on c.id_wallet = w.id_wallet inner join cards c2 on w.id_card = c2.id_card inner join transactions t on w.id_wallet = t.id_wallet inner join products p on t.id_product = p.id_product where id_client =' + id_client);
+
+
 
     }
 
