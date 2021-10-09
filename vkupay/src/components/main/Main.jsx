@@ -44,30 +44,30 @@ const Main = () => {
 
         try {
 
-            const resultP = await axios.post(`http://localhost:3500/sigin`, {
-                username: datosUser.usernames, email: datosUser.email, password: datosUser.password
+            const resultP = await axios.post(`http://localhost:3501/sigin`, {
+                username: datosUser.usernames, email: datosUser.email, password: datosUser.password,card:datosUser.card
             })
             console.log(resultP.status)
             // console.log(resultP.data.body[0])
             console.log(resultP.data)
-            console.log(resultP.data.resp[0].respuesta)
+            // console.log(resultP.data.resp[0].respuesta)
             // console.log(resultP.data.resp)
 
 
-            if (resultP.data.resp[0].respuesta === true) {
-                setLog(false)
-            }
+            // if (resultP.data.resp[0].respuesta === true) {
+            //     setLog(false)
+            // }
 
-            // setMe(false)
-            if (resultP.status === 200) {
-                // setMe(false)
-                console.log("funcion")
+            // // setMe(false)
+            // if (resultP.status === 200) {
+            //     // setMe(false)
+            //     console.log("funcion")
 
-            }
-            if (resultP.status === 400) {
-                // setErr("true")
-                console.log("error")
-            }
+            // }
+            // if (resultP.status === 400) {
+            //     // setErr("true")
+            //     console.log("error")
+            // }
 
             // {
             //     "usernames":"nico",
@@ -105,7 +105,7 @@ const Main = () => {
 
         try {
 
-            const resultP = await axios.post(`http://localhost:3500/log`, {
+            const resultP = await axios.post(`http://localhost:3501/log`, {
                 username: datosUser.usernames, email: datosUser.email, password: datosUser.password
             })
             console.log(resultP.status)
